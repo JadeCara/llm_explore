@@ -18,7 +18,7 @@ scikit-learn == 1.5.*
 transformers == 4.45.*
 torch == 2.4.*
 
-black >= 21.0
+black[jupyter] >= 21.0
 flake8 >= 3.8.0
 
 sphinx
