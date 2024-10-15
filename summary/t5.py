@@ -32,21 +32,3 @@ def summarize_document(text, model_name="t5-small", max_length=150, min_length=3
 
     summary = tokenizer.decode(summary_ids[0], skip_special_tokens=True)
     return summary
-
-
-if __name__ == "__main__":
-    document_text = (
-        """Artificial intelligence (AI) is intelligence demonstrated by machines, """
-        """in contrast to the natural intelligence displayed by humans and animals.  """
-        """Leading AI textbooks define the field as the study of "intelligent agents": """
-        """any device that perceives its environment and takes actions that maximize """
-        """its chance of successfully achieving its goals. Colloquially, the term """
-        """"artificial intelligence" is often used to describe machines (or computers) """
-        """that mimic "cognitive" functions that humans associate with the human mind, """
-        """such as "learning" and "problem solving"."""
-    )
-
-    summary = summarize_document(document_text, model_name="t5-small")
-
-    print("Summary:")
-    print(summary)
