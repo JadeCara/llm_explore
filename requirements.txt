@@ -1,0 +1,20 @@
+pytest
+pytest-cov
+
+ipython
+jupyter
+matplotlib
+neo4j
+networkx
+requests == 2.32.*
+protobuf
+pydantic == 2.9.*
+
+keybert
+sentencepiece
+scikit-learn
+transformers
+torch
+
+black
+flake8
