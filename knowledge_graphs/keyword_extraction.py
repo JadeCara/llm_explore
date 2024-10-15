@@ -1,9 +1,10 @@
 from keybert import KeyBERT
 from sklearn.feature_extraction.text import TfidfVectorizer
 
+
 def extract_keywords_tfidf(documents, top_n=5):
     # Initialize the TF-IDF vectorizer
-    vectorizer = TfidfVectorizer(max_df=0.85, stop_words='english')
+    vectorizer = TfidfVectorizer(max_df=0.85, stop_words="english")
 
     # Fit and transform the documents
     tfidf_matrix = vectorizer.fit_transform(documents)
@@ -27,17 +28,9 @@ def extract_keywords_keybert(documents, top_n=5):
     keyword_dict = {}
 
     for idx, doc in enumerate(documents):
-        keywords = model.extract_keywords(doc, keyphrase_ngram_range=(1, 2), stop_words='english', top_n=top_n)
+        keywords = model.extract_keywords(
+            doc, keyphrase_ngram_range=(1, 2), stop_words="english", top_n=top_n
+        )
         keyword_dict[f"Document_{idx+1}"] = [keyword[0] for keyword in keywords]
 
     return keyword_dict
-
-
-# Example usage
-documents = [
-    "Artificial intelligence is intelligence demonstrated by machines.",
-    "Machine learning is a subset of AI focused on the development of algorithms.",
-    "Deep learning is a subset of machine learning involving neural networks."
-]
-print("TFIDF:", extract_keywords_tfidf(documents))
-print("KEYBERT:", extract_keywords_keybert(documents))

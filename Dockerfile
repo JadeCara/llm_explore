@@ -8,8 +8,8 @@ RUN apt-get update && apt-get install -y python3 python3-pip
 COPY requirements.txt requirements.txt
 
 # Install dependencies
+COPY . app/
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY . app/
-
-CMD ["bash"]
+EXPOSE 8888
+CMD ["jupyter", "notebook", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--allow-root", "--NotebookApp.token=''"]

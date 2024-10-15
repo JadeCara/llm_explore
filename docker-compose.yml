@@ -1,6 +1,17 @@
 version: '3'
 
 services:
+  neo4j:
+    image: neo4j:4.4
+    container_name: neo4j
+    environment:
+      NEO4J_AUTH: neo4j/password
+    ports:
+      - "7687:7687"  # Bolt port for Neo4j connections
+      - "7474:7474"  # Neo4j Browser UI port
+    volumes:
+      - neo4j_data:/data
+      - neo4j_logs:/logs
   app:
     build: .
     volumes:
@@ -8,3 +19,16 @@ services:
     working_dir: /app
     stdin_open: true
     tty: true
+  jupyter:
+    build: .
+    ports:
+      - "8888:8888"
+    volumes:
+      - .:/app
+    working_dir: /app
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+
+volumes:
+  neo4j_data:
+  neo4j_logs:

@@ -1,6 +1,6 @@
 from itertools import combinations
 from collections import defaultdict
-from knowledge_graphs.keyword_extraction import extract_keywords_tfidf, documents
+
 
 def extract_relationships(documents, keyword_dict):
     relationships = defaultdict(list)
@@ -13,8 +13,3 @@ def extract_relationships(documents, keyword_dict):
             relationships[pair[1]].append(pair[0])
 
     return relationships
-
-# Example usage
-keywords = extract_keywords_tfidf(documents)
-relationships = extract_relationships(documents, keywords)
-print(relationships)
